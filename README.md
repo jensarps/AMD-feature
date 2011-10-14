@@ -1,7 +1,7 @@
 About
 =====
 
-AMD-feature is a plugin for AMD loaders. It allows for easy cross-target 
+AMD-feature is a plugin for [AMD loaders](https://github.com/amdjs/amdjs-api/wiki/Loader-Plugins). It allows for easy cross-target 
 development and code management.
 
 The Idea
@@ -82,8 +82,9 @@ Given the first example:
 Let's call the feature 'dropdown'. So you create two implementations of this:
  
 
-dropdown-ios.js
+	dropdown-ios.js
 
+```javascript
 define({
 	var dropdown = function(){
 		// ios specific dropdown here
@@ -91,10 +92,13 @@ define({
 	
 	return dropdown;
 });
+```
 
+and:
 
-dropdown-android.js
+	dropdown-android.js
 
+```javascript
 define({
 	var dropdown = function(){
 		// android specific dropdown here
@@ -102,12 +106,13 @@ define({
 	
 	return dropdown;
 });
-
+```
 
 Your implementation map would then look like this:
 
-dynamic.js
+	dynamic.js
 
+```javascript
 define({
 	'dropdown': [
 		{
@@ -129,10 +134,12 @@ define({
 		}
 	]
 });
+```
 
 In your code, you would load your feature like this:
 
-define(['feature!dropdown], function(dropdown){
+```javascript
+define(['feature!dropdown'], function(dropdown){
 	
 	// The variable 'dropdown' now contains
 	// the right implementation - no matter
@@ -140,15 +147,18 @@ define(['feature!dropdown], function(dropdown){
 	// and you can just do this:
 	var myDropdown = new dropdown();
 });
+```
 
 When you want to build your code for a specific platform, e.g. for Android, 
 you create a so-called 'specific implementation map':
 
-android.js
+	android.js
 
+```javascript
 define({
 	'dropdown': 'src/dropdown-android'
 });
+```
 
 When you feed this implementation map to AMD-feature, it will of course load
 only the Android implementation of the dropdown feature.
@@ -156,7 +166,7 @@ only the Android implementation of the dropdown feature.
 Now whats left is to tell your AMD loader and the feature plugin what 
 implementation map to use. For RequireJS, you do it in the config object:
 
-
+```html
 <script>
 	var require = {
 		baseUrl: './',
@@ -168,6 +178,7 @@ implementation map to use. For RequireJS, you do it in the config object:
 	};
 </script>
 <script type="text/javascript" src="require.js"></script>
+```
 
 detect.js
 =========
