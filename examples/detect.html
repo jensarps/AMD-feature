@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AMD Feature-Plugin Example</title>
+		<script>
+			var require = {
+				baseUrl: 'src',
+				paths: {
+					// we need to point the plugin to the 
+					// implementation map that it should use:
+					// (path needs to be relative to baseUrl)
+					'implementations': '../targets/dynamic'
+				}
+			};
+		</script>
+		<script type="text/javascript" src="require.js"></script>	
+		<script type="text/javascript">
+			// To check what the results of your tests are,
+			// we can require the detect.js file, which
+			// run all tests and return us a map with the
+			// implementations that would be chosen. The
+			// map will also contain the source of the
+			// test that was run successfully, if given.
+			require(['../detect'], function(detectedMap){
+				console.log(detectedMap);
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
