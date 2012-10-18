@@ -22,7 +22,7 @@ define(['implementations'], function(implementations){
 				// a conflict when we try to 'register' another
 				// module for the same feature).
 				for(i=0, m=featureInfo.length; i<m; i++){
-					req([featureInfo[i].implementation], _noop);
+					req([featureInfo[i].implementation], _load);
 				}
 
 				// We're done here now.
