@@ -9,7 +9,6 @@ define(['implementations'], function(implementations){
 				opts = {}.toString,
 				isArray = function(it){ return opts.call(it) == '[object Array]'; },
 				hasMultipleImpls = isArray(featureInfo),
-				_noop = function(){},
 				_load = function (value) { load(value); };
 
 			if(config.isBuild && hasMultipleImpls){
