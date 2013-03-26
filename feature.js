@@ -6,17 +6,14 @@ define(['implementations'], function (implementations) {
 
       var i, m, toLoad,
           featureInfo = implementations[name],
-          hasMultipleImpls = Object.prototype.toString.call(featureInfo) == '[object Array]',
-          _load = function (value) {
-            load(value);
-          };
+          hasMultipleImpls = Object.prototype.toString.call(featureInfo) == '[object Array]';
 
       if (config.isBuild && hasMultipleImpls) {
         // In build context, we want all possible
         // implementations included.
         for (i = 0, m = featureInfo.length; i < m; i++) {
           if (featureInfo[i].implementation) {
-            req([featureInfo[i].implementation], _load);
+            req([featureInfo[i].implementation], load);
           }
         }
 
@@ -46,7 +43,7 @@ define(['implementations'], function (implementations) {
         toLoad = featureInfo;
       }
 
-      req([toLoad], _load);
+      req([toLoad], load);
     }
   };
 });
