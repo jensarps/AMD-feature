@@ -6,11 +6,7 @@ define(['implementations'], function (implementations) {
 
       var i, m, toLoad,
           featureInfo = implementations[name],
-          opts = {}.toString,
-          isArray = function (it) {
-            return opts.call(it) == '[object Array]';
-          },
-          hasMultipleImpls = isArray(featureInfo),
+          hasMultipleImpls = Object.prototype.toString.call(featureInfo) == '[object Array]',
           _load = function (value) {
             load(value);
           };
