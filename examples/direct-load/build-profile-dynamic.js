@@ -7,7 +7,7 @@
     'feature': '../../../feature'
   },
 
-  name: 'example',
+  name: 'app',
 
   out: 'build-dynamic.js'
 })
