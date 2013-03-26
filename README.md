@@ -219,6 +219,22 @@ define({
 });
 ```
 
+To use direct loading in a specific implementation map, pass an object
+containing the `module` property instead of a string:
+
+
+	native-json.js
+
+```javascript
+define({
+
+  JSON:	{
+    module: JSON
+  }
+
+});
+```
+
 See the code in the `examples/direct-load` directory for an example of this.
 
 
