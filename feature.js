@@ -13,13 +13,7 @@ define(['implementations'], function (implementations) {
 
       if (config.isBuild && hasMultipleImpls) {
         // In build context, we want all possible
-        // implementations included, but we don't
-        // want to actually load them, as this will
-        // break the whole process (loading the modules
-        // will add 'feature!featureName' to the list
-        // of already defined modules, thus leading to
-        // a conflict when we try to 'register' another
-        // module for the same feature).
+        // implementations included.
         for (i = 0, m = featureInfo.length; i < m; i++) {
           if (featureInfo[i].implementation) {
             req([featureInfo[i].implementation], _load);
