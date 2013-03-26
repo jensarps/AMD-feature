@@ -180,6 +180,48 @@ implementation map to use. For RequireJS, you do it in the config object:
 <script type="text/javascript" src="require.js"></script>
 ```
 
+Direct Loading
+==============
+
+In some cases, the implementation of a feature doesn't require an own file, e.g.
+if your feature has a native implementation or if it is a plain object.
+
+You can then use the `module` property in the implementation map instead of the
+`implementation` property to tell the plugin that no file needs to be loaded,
+but the value of the property should be used to satisfy the request for the
+feature.
+
+
+	dynamic.js
+
+```javascript
+define({
+	'JSON': [
+		{
+			isAvailable: function(){
+				// test if native JSON is available
+				return typeof JSON != 'undefined';
+			},
+
+			// if so, directly use the JSON object as module
+			module: JSON
+		},
+		{
+			isAvailable: function(){
+				// This is the fallback
+				return true;
+			},
+
+			// return the path to some JSON implementation
+			implementation: 'src/json-impl'
+		}
+	]
+});
+```
+
+See the code in the `examples/direct-load` directory for an example of this.
+
+
 Builds
 ======
 
