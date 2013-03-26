@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AMD Feature-Plugin Example</title>
+		<script>
+			var require = {
+				baseUrl: 'src',
+				paths: {
+					// we need to point the plugin to the 
+					// implementation map that it should use:
+					// (path needs to be relative to baseUrl)
+					'implementations': '../targets/dynamic',
+
+					// we also need to tell RequireJS where to
+					// find the feature plugin, becuase it's not
+					// in the baseUrl directory:
+					'feature': '../../../feature'
+				}
+			};
+		</script>
+		<script type="text/javascript" src="../require.js"></script>
+	</head>
+	<body>
+    <script type="text/javascript" src="src/app.js"></script>
+	</body>
+</html>

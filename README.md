@@ -149,7 +149,7 @@ define(['feature!dropdown'], function(dropdown){
 });
 ```
 
-When you want to build your code for a specific platform, e.g. for Android, 
+When you want to deploy your code for a specific platform, e.g. for Android,
 you create a so-called 'specific implementation map':
 
 	android.js
@@ -179,6 +179,61 @@ implementation map to use. For RequireJS, you do it in the config object:
 </script>
 <script type="text/javascript" src="require.js"></script>
 ```
+
+Direct Loading
+==============
+
+In some cases, the implementation of a feature doesn't require an own file, e.g.
+if your feature has a native implementation or if it is a plain object.
+
+You can then use the `module` property in the implementation map instead of the
+`implementation` property to tell the plugin that no file needs to be loaded,
+but the value of the property should be used to satisfy the request for the
+feature.
+
+
+	dynamic.js
+
+```javascript
+define({
+	'JSON': [
+		{
+			isAvailable: function(){
+				// test if native JSON is available
+				return typeof JSON != 'undefined';
+			},
+
+			// if so, directly use the JSON object as module
+			module: JSON
+		},
+		{
+			isAvailable: function(){
+				// This is the fallback
+				return true;
+			},
+
+			// return the path to some JSON implementation
+			implementation: 'src/json-impl'
+		}
+	]
+});
+```
+
+See the code in the `examples/direct-load` directory for an example of this.
+
+
+Builds
+======
+
+Creating builds follows the same idea as deploying: In your build profile, just
+point to the right implementation map. If you want a dynamic build that
+includes all possible implementations for a given feature, point to the dynamic
+implementation map. If you want a build for a specific target, that only
+contains the implementation for the target, point to the specific implementation
+map.
+
+See the `build-profile-*.js` files in the example directory for example build
+profiles.
 
 detect.js
 =========
