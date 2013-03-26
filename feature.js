@@ -32,12 +32,21 @@ define(['implementations'], function (implementations) {
         // We have different implementations available,
         // test for the one to use.
         for (i = 0, m = featureInfo.length; i < m; i++) {
-          if (featureInfo[i].isAvailable()) {
-            toLoad = featureInfo[i].implementation;
+          var current = featureInfo[i];
+          if (current.isAvailable()) {
+            if (typeof current.module != 'undefined') {
+              load(current.module);
+              return;
+            }
+            toLoad = current.implementation;
             break;
           }
         }
       } else {
+        if (typeof featureInfo.module != 'undefined') {
+          load(featureInfo.module);
+          return;
+        }
         toLoad = featureInfo;
       }
 
