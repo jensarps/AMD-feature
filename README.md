@@ -149,7 +149,7 @@ define(['feature!dropdown'], function(dropdown){
 });
 ```
 
-When you want to build your code for a specific platform, e.g. for Android, 
+When you want to deploy your code for a specific platform, e.g. for Android,
 you create a so-called 'specific implementation map':
 
 	android.js
@@ -179,6 +179,19 @@ implementation map to use. For RequireJS, you do it in the config object:
 </script>
 <script type="text/javascript" src="require.js"></script>
 ```
+
+Builds
+======
+
+Creating builds follows the same idea as deploying: In your build profile, just
+point to the right implementation map. If you want a dynamic build that
+includes all possible implementations for a given feature, point to the dynamic
+implementation map. If you want a build for a specific target, that only
+contains the implementation for the target, point to the specific implementation
+map.
+
+See the `build-profile-*.js` files in the example directory for example build
+profiles.
 
 detect.js
 =========
