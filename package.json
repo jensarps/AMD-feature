@@ -1,0 +1,10 @@
+{
+  "name": "feature",
+  "version": "0.0.0",
+  "description": "A loader plugin for AMD loaders",
+  "main": "feature.js",
+
+  "jam": {
+    "include": ["feature.js"]
+  }
+}
