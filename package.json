@@ -1,5 +1,5 @@
 {
-  "name": "feature",
+  "name": "amd-feature",
   "version": "1.0.0",
   "description": "A loader plugin for AMD loaders",
   "main": "feature",
