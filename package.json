@@ -1,8 +1,34 @@
 {
   "name": "feature",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A loader plugin for AMD loaders",
-  "main": "feature.js",
+  "main": "feature",
+  "keywords": [
+    "AMD", "module", "feature"
+  ],
+  "author": "jensarps <mail@jensarps.de> (http://jensarps.de/)",
+  "repository": "git://github.com/jensarps/AMD-feature.git",
+  "homepage": "https://github.com/jensarps/AMD-feature",
+  "bugs": {
+    "url": "https://github.com/jensarps/AMD-feature/issues",
+    "email": "mail@jensarps.de"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "licenses": [
+    {
+      "type": "BSD",
+      "url": "https://github.com/jensarps/AMD-feature/blob/master/LICENSE#L6"
+    },
+    {
+      "type": "MIT",
+      "url": "https://github.com/jensarps/AMD-feature/blob/master/LICENSE#L35"
+    }
+  ],
+  "scripts": {
+  },
 
   "jam": {
     "include": ["feature.js"]
