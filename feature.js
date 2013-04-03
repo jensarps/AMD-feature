@@ -1,3 +1,12 @@
+/**
+ * AMD-Feature - A loader plugin for AMD loaders.
+ * 
+ * https://github.com/jensarps/AMD-feature
+ *
+ * @author Jens Arps - http://jensarps.de/
+ * @license MIT or BSD - https://github.com/jensarps/AMD-feature/blob/master/LICENSE
+ * @version 1.1.0
+ */
 define(['implementations'], function (implementations) {
 
   return {
@@ -28,7 +37,7 @@ define(['implementations'], function (implementations) {
           var current = featureInfo[i];
           if (current.isAvailable()) {
             if (typeof current.module != 'undefined') {
-              load(current.module);
+              load(current.module());
               return;
             }
             toLoad = current.implementation;
@@ -37,7 +46,7 @@ define(['implementations'], function (implementations) {
         }
       } else {
         if (typeof featureInfo.module != 'undefined') {
-          load(featureInfo.module);
+          load(featureInfo.module());
           return;
         }
         toLoad = featureInfo;

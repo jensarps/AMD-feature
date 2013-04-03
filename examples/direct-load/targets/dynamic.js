@@ -4,7 +4,9 @@ define({
 
 	JSON: [
 		{
-      module: JSON,
+      module: function () {
+        return JSON;
+      },
 
 			isAvailable: function(){
 				// Let's provide a test that indicates
