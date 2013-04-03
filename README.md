@@ -188,8 +188,8 @@ if your feature has a native implementation or if it is a plain object.
 
 You can then use the `module` property in the implementation map instead of the
 `implementation` property to tell the plugin that no file needs to be loaded,
-but the value of the property should be used to satisfy the request for the
-feature.
+but to execute the function found in the `module` property and take it's return
+value to satisfy the request for the feature.
 
 
 	dynamic.js
@@ -204,7 +204,9 @@ define({
 			},
 
 			// if so, directly use the JSON object as module
-			module: JSON
+			module: function () {
+			  return JSON;
+			}
 		},
 		{
 			isAvailable: function(){
@@ -229,7 +231,9 @@ containing the `module` property instead of a string:
 define({
 
   JSON:	{
-    module: JSON
+    module: function () {
+      return JSON;
+    }
   }
 
 });
