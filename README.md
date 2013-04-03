@@ -14,7 +14,7 @@ Very probably, these features are already organized as AMD modules.
 AMD-feature allows you to list those features in an implementation map. And
 if there are multiple implementations for a given feature, you can provide
 a method for each implementation in this map, that decides whether a specific
-implemenation should be used to satisfy the requirement for a certain
+implementation should be used to satisfy the requirement for a certain
 feature.
 
 Benefits
@@ -50,7 +50,7 @@ Example 1
 You are developing an app for both Android and iOS, and you have a dropdown 
 list in your app that works different for both platforms. You could throw all
 the code for both targets into one big, un-maintainable file. Or, you could 
-seperate them: because these are two implementations of one feature.
+separate them: because these are two implementations of one feature.
 
 
 Example 2
@@ -58,14 +58,14 @@ Example 2
 
 You are building a web-app and your targets are different browsers with
 different capabilities. Again, you wouldn't want to put the code for all
-browsers in one file, but instead seperate code for different targets into 
+browsers in one file, but instead separate code for different targets into
 different implementations and use has.js to do runtime feature detection to
 load the best implementation for the current browser.
 
 Example 3
 =========
 
-You're building an app that has different capabilites in the free and premium
+You're building an app that has different capabilities in the free and premium
 version. So you can use the dynamic implementation map to easily switch between
 versions during development and use a specific map to build the code to deploy.
 
