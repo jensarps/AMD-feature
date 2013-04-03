@@ -3,7 +3,9 @@
 define({
 
   JSON:	{
-    module: JSON
+    module: function () {
+      return JSON;
+    }
   }
 
 });
