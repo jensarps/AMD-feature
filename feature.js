@@ -28,7 +28,7 @@ define(['implementations'], function (implementations) {
           var current = featureInfo[i];
           if (current.isAvailable()) {
             if (typeof current.module != 'undefined') {
-              load(current.module);
+              load(current.module());
               return;
             }
             toLoad = current.implementation;
@@ -37,7 +37,7 @@ define(['implementations'], function (implementations) {
         }
       } else {
         if (typeof featureInfo.module != 'undefined') {
-          load(featureInfo.module);
+          load(featureInfo.module());
           return;
         }
         toLoad = featureInfo;
