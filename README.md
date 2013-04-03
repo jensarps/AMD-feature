@@ -85,7 +85,7 @@ Let's call the feature 'dropdown'. So you create two implementations of this:
 	dropdown-ios.js
 
 ```javascript
-define({
+define(function() {
 	var dropdown = function(){
 		// ios specific dropdown here
 	};
@@ -99,7 +99,7 @@ and:
 	dropdown-android.js
 
 ```javascript
-define({
+define(function() {
 	var dropdown = function(){
 		// android specific dropdown here
 	};
