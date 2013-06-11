@@ -3,9 +3,7 @@
   "version": "1.1.0",
   "main": "feature.js",
   "ignore": [
-    "**/.*",
-    "node_modules",
-    "components"
+    "**/.*"
   ],
   "dependencies": {
   	"requirejs": "~2.1.6"
