@@ -42,13 +42,11 @@ define({
 		{
 			implementation: 'color/blue',
 			
-			isAvailable: function(){
-				// This implementation is kind of a
-				// fallback impl, that is always
-				// available, but it should only be
-				// used if the others are not available.
-				return true;
-			}
+			// This implementation is kind of a
+			// fallback impl, that is always
+			// available, but it should only be
+			// used if the others are not available.
+			isAvailable: true
 		}
 	]
 
