@@ -1,6 +1,6 @@
 /**
  * AMD-Feature - A loader plugin for AMD loaders.
- * 
+ *
  * https://github.com/jensarps/AMD-feature
  *
  * @author Jens Arps - http://jensarps.de/
@@ -10,11 +10,11 @@
 define(['implementations'], function (implementations) {
 
   // Check availability of implementation
-  function isAvailable(impl, name) {
+  function isAvailable (impl, name) {
     var isFunction = typeof impl.isAvailable === 'function';
     return (isFunction && impl.isAvailable(name)) || (!isFunction && impl.isAvailable);
   }
-  
+
   return {
 
     load: function (name, req, load, config) {
@@ -53,11 +53,11 @@ define(['implementations'], function (implementations) {
       } else {
         impl = featureInfo;
         // The only implementation can have isAvailable check
-        if (impl && typeof impl === 'object' && ('isAvailable' in impl) && ! isAvailable(impl, name)) {
+        if (impl && typeof impl === 'object' && ('isAvailable' in impl) && !isAvailable(impl, name)) {
           impl = null;
         }
       }
-      
+
       if (impl) {
         if (typeof impl === 'string') {
           toLoad = impl;
