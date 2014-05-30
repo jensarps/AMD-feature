@@ -5,7 +5,7 @@
  *
  * @author Jens Arps - http://jensarps.de/
  * @license MIT or BSD - https://github.com/jensarps/AMD-feature/blob/master/LICENSE
- * @version 1.1.0
+ * @version 1.2.0
  */
 define(['implementations'], function (implementations) {
 
