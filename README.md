@@ -37,12 +37,21 @@ How does it work?
 The loader plugin requires an implementation map. This map is an object, with
 the names of your features as keys. The respective values can either be a 
 simple string in case there is only one implementation of a feature, or an
-Array of Objects for each of the possible implementation. Each of these objects
-must provide two keys: one is a function, 'isAvailable' and the other is a 
-string, 'implementation', which contains the path to the file that implements
-the feature. The 'isAvailable()' function must return a boolean that determines
-whether the implementation is currently suitable for the given feature.
+Object or an Array of Objects defining each of the possible implementations. 
+Each of these objects must provide two keys:
 
+1. `isAvailable` - determines whether the implementation is currently suitable 
+for the given feature. Can be a function that must return a boolean, or any 
+other value that is interpreted as boolean value. The name of the feature 
+will be passed as parameter into the `isAvailable()` function.
+2. `implementation` - determines the file (resource) that implements the feature.
+Can be a string which contains the path to the file (and maybe the loader plugin
+that should be used, for example, `json!path/to/data.json`), or a function that
+returns the path. The name of the feature will be passed as parameter into 
+the `implementation()` function.  
+It is possible to use the `module` property instead of the `implementation` 
+property. The value of the `module` property defines implementation of 
+the feature (see [Direct Loading](#direct_loading) for details).
 
 Example 1
 =========
@@ -118,23 +127,36 @@ define({
 		{
 			isAvailable: function(){
 				// test if we are on iOS
-				return iOS ? true: false;
+				return iOS ? true : false;
 			},
 			
 			implementation: 'src/dropdown-ios'
 		},
 		{
-			isAvailable: function(){
-				// if we end up here, we're not on iOS,
-				// so we can just return true.
-				return true;
-			},
+			// if we end up here, we're not on iOS,
+			// so we can just use true.
+			isAvailable: true,
 			
 			implementation: 'src/dropdown-android'
 		}
 	]
 });
 ```
+
+A more concise alternative is the following:
+
+	dynamic-concise.js
+
+```javascript
+define({
+	'dropdown': {
+		implementation: function(){
+			return iOS ? 'src/dropdown-ios' : 'src/dropdown-android';
+		}
+	}
+});
+```
+
 
 In your code, you would load your feature like this:
 
@@ -180,16 +202,19 @@ implementation map to use. For RequireJS, you do it in the config object:
 <script type="text/javascript" src="require.js"></script>
 ```
 
-Direct Loading
+Direct Loading <a name="direct_loading"></a>
 ==============
 
 In some cases, the implementation of a feature doesn't require an own file, e.g.
 if your feature has a native implementation or if it is a plain object.
 
 You can then use the `module` property in the implementation map instead of the
-`implementation` property to tell the plugin that no file needs to be loaded,
-but to execute the function found in the `module` property and take it's return
-value to satisfy the request for the feature.
+`implementation` property to tell the plugin that no file needs to be loaded.
+If the value of the `module` property is not a function, the value will be used
+as implementation of the feature. If the value of the `module` property is 
+a function, its return value will be taken to satisfy the request for the 
+feature. The name of the feature will be passed as parameter into the 
+`implementation()` function.
 
 
 	dynamic.js
@@ -204,7 +229,7 @@ define({
 			},
 
 			// if so, directly use the JSON object as module
-			module: function () {
+			module: function() {
 			  return JSON;
 			}
 		},
@@ -230,7 +255,7 @@ containing the `module` property instead of a string:
 ```javascript
 define({
 
-  JSON:	{
+  JSON: {
     module: function () {
       return JSON;
     }
