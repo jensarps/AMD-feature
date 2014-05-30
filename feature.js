@@ -11,8 +11,8 @@ define(['implementations'], function (implementations) {
 
   // Check availability of implementation
   function isAvailable(impl, name) {
-    var funcType = typeof impl.isAvailable === 'function';
-    return (funcType && impl.isAvailable(name)) || (! funcType && impl.isAvailable);
+    var isFunction = typeof impl.isAvailable === 'function';
+    return (isFunction && impl.isAvailable(name)) || (!isFunction && impl.isAvailable);
   }
   
   return {
