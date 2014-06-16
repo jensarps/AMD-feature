@@ -32,7 +32,7 @@ define(['implementations'], function (implementations) {
             impl = impl.call(featureInfo[i], name);
           }
           if (impl) {
-            req(impl, load);
+            req([impl], load);
           }
         }
 
