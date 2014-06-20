@@ -214,7 +214,7 @@ If the value of the `module` property is not a function, the value will be used
 as implementation of the feature. If the value of the `module` property is 
 a function, its return value will be taken to satisfy the request for the 
 feature. The name of the feature will be passed as parameter into the 
-`implementation()` function.
+`module()` function.
 
 
 	dynamic.js
@@ -234,10 +234,8 @@ define({
 			}
 		},
 		{
-			isAvailable: function(){
-				// This is the fallback
-				return true;
-			},
+			// This is the fallback
+			isAvailable: return true;
 
 			// return the path to some JSON implementation
 			implementation: 'src/json-impl'
