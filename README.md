@@ -235,7 +235,7 @@ define({
 		},
 		{
 			// This is the fallback
-			isAvailable: return true;
+			isAvailable: true,
 
 			// return the path to some JSON implementation
 			implementation: 'src/json-impl'
